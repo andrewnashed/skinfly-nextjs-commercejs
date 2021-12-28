@@ -17,7 +17,7 @@ const Product = ({product}) => {
   }
 
     return ( 
-      <Link href={`/shop/${product.permalink}`}>
+      <Link href={`/shop/${product.permalink}`} passHref>
       
       <div className='sm:w-[45%]  w-[30%]  mt-6'>
         <div            

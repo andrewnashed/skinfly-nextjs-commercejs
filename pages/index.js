@@ -28,7 +28,7 @@ export default function Home({products, categories}) {
         <section className='flex sm:flex-col items-center justify-evenly sm:space-y-8  lg:w-[50%]'>
         {categories.map(c => {
           return(
-            <div
+            <div key={c.id}
             style={{backgroundImage:(c.assets && c.assets.length > 0) && `linear-gradient(rgba(0,0,0, 0.3), rgba(0, 0, 0, 0.7)), url(${c.assets[0].url})`}}
             className='bg-cover bg-center bg-no-repeat h-[350px] sm:w-[70%] w-[30%] flex justify-center items-center text-white'
             >
@@ -45,7 +45,7 @@ export default function Home({products, categories}) {
       <div className='flex flex-col items-center justify-center space-y-6 py-12 w-full text-center text-2xl'>
         <h2 className='text-4xl capitalize'>featured products</h2>
         <section className='flex flex-wrap justify-evenly sm:w-full lg:w-[50%]'>
-        {products.map(product => <Product product={product}/>)}
+        {products.map(product => <Product key={product.id} product={product}/>)}
         </section>
       </div>
     </div>

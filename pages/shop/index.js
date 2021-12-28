@@ -21,10 +21,10 @@ export default function ShopPage({products, categories}){
         <div className='my-24 w-full flex flex-col items-center space-y-10'>
             {categories.map(category => {
                 return(
-                    <section id={`${category.slug}`} className='w-full flex flex-col items-center space-y-6'>
+                    <section id={`${category.slug}`} key={category.id} className='w-full flex flex-col items-center space-y-6'>
                         <h2 className='text-4xl text-bold'>{category.name}</h2>
                         <section className='flex w-[70%] justify-evenly items-center flex-wrap place-items-center sm:w-full'>
-                        {products.filter(product => product.categories[0].name === category.name ).map(product => <Product product={product} />)}
+                        {products.filter(product => product.categories[0].name === category.name ).map(product => <Product key={product.id} product={product} />)}
                         </section>
                     </section>
                 )

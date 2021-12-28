@@ -46,7 +46,7 @@ const Cart = ({toggleCart}) => {
         <section className='flex flex-col h-screen items-center w-full px-6 py-4 space-y-8'>
         {line_items.map(item => {
             return(
-                <CartItem item={item} />
+                <CartItem key={item.id} item={item} />
             )
         })}
         </section>
