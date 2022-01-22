@@ -13,7 +13,7 @@ export default function LikesPage(){
         setProducts(products)
     })
 
-   if (likedProducts === null || likedProducts.length === 0){
+   if (likedProducts === null){
        return(
            <div className='flex flex-col items-center justify-center h-screen'>
                <h2>You have 0 Produts in your Likes.</h2>
