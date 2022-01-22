@@ -1,24 +1,48 @@
-import React, {useState} from 'react';
-import {HiOutlineHeart, HiHeart, HiPlus} from 'react-icons/hi'
-import Link from 'next/link'
-import commerce from '../../lib/commerce'
+import React, {useState, useEffect} from 'react';
+import {HiOutlineHeart, HiHeart, HiPlus} from 'react-icons/hi';
+import Link from 'next/link';
+import commerce from '../../lib/commerce';
 import { UseCartDispatch } from '../../context/cart';
 
 const Product = ({product}) => {
     const {setCart} = UseCartDispatch()
     const [heart, setHeart] = useState(false)
-    const toggleHeart = () => {
-        if(heart) setHeart(false)
-        else setHeart(true)
+
+
+    useEffect(()=>{
+      let likedProducts = JSON.parse(localStorage.getItem('products'))
+      for (let i=0; i<likedProducts.length; i++) {
+        if(likedProducts[i].id === product.id){
+          setHeart(true)
+        }
+      }
+    },[heart])
+    const toggleHeart = (e) => {
+      e.stopPropagation(); 
+        if(heart) {
+          setHeart(false);
+          let likedProducts = JSON.parse(localStorage.getItem('products'));
+          let newArr = likedProducts.filter(item => item.id !== product.id)
+          localStorage.setItem('products', JSON.stringify(newArr))
+        }
+        else {
+          setHeart(true);
+          let likedProducts = JSON.parse(localStorage.getItem('products'))
+          if (likedProducts === null) likedProducts = [];
+          likedProducts.push(product)
+          localStorage.setItem(`products`, JSON.stringify(likedProducts));
+        }
     }
 
-    const addToCart = () => {
+    const addToCart = (e) => {
+      e.stopPropagation(); 
           commerce.cart.add(product.id, 1).then(({cart}) => setCart(cart))
   }
 
+
+
     return ( 
-      <Link href={`/shop/${product.permalink}`} passHref>
-      
+      <Link href={`/shop/${product.permalink}`}>
       <div className='sm:w-[45%]  w-[30%]  mt-6'>
         <div            
          style={{backgroundImage: `linear-gradient(rgba(0,0,0, 0.3), rgba(0, 0, 0, 0.7)), url(${product.image.url})`}}
@@ -33,9 +57,7 @@ const Product = ({product}) => {
           <h3>{product.price.formatted_with_symbol}</h3>
         </span>
       </div>
-      
-      </Link>
-     
+     </Link>
      );
 }
  

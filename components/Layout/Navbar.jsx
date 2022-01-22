@@ -1,5 +1,6 @@
 import React,{useState, useEffect} from 'react';
 import Link from 'next/link'
+import Router from 'next/router';
 import useWindowDimensions from '../../hooks/useWindowsDimensions';
 import {HiMenuAlt1} from 'react-icons/hi'
 import {AiOutlineHeart, AiOutlineShopping, AiOutlineClose} from 'react-icons/ai'
@@ -59,7 +60,7 @@ const Navbar = ({toggleCart}) => {
            
         </ul>}
         <span className='flex space-x-4 justify-evenly'>
-        <button>
+        <button onClick={() => Router.push('likes')}>
             <AiOutlineHeart size="32"/>
         </button>
         <span className='flex'>

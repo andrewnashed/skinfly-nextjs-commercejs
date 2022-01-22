@@ -11,7 +11,7 @@ const Layout = ({children}) => {
 
     const {asPath} = useRouter()
     return ( 
-    <div className=' flex flex-wrap'>
+    <div  className=' flex flex-wrap'>
        {asPath ==='/'? <Header toggleCart={toggleCart}/>:<Navbar toggleCart={toggleCart}/>}
        {openCart && <Cart toggleCart={toggleCart}/>}
         <main className='flex flex-col w-full'>
