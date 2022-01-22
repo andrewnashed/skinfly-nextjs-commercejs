@@ -11,11 +11,12 @@ const Product = ({product}) => {
 
     useEffect(()=>{
       let likedProducts = JSON.parse(localStorage.getItem('products'))
-      for (let i=0; i<likedProducts.length; i++) {
+      if (likedProducts !== null){
+        for (let i=0; i<likedProducts.length; i++) {
         if(likedProducts[i].id === product.id){
-          setHeart(true)
+          setHeart(true);
         }
-      }
+      }};
     },[heart])
     const toggleHeart = (e) => {
       e.stopPropagation(); 
