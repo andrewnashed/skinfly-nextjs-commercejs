@@ -8,6 +8,7 @@ export default function LikesPage(){
 
     useEffect(()=> {
         const products = JSON.parse(localStorage.getItem('products'))
+        if (products === null) products = [];
         console.log(products);
         setProducts(products)
     })
