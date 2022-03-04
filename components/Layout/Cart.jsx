@@ -38,17 +38,21 @@ const CartItem = ({item}) =>{
 
 const Cart = ({toggleCart}) => {
     const {line_items, subtotal} = UseCartState()
+
+
     return ( <div className=' flex flex-col items-center h-screen bg-white sm:w-full md:w-5/6 w-2/5 fixed top-0 right-0 z-20'>
         <span className='flex justify-between items-center w-full px-6 py-4 border-b-2 text-5xl'>
             <h2 className=' '>Cart</h2>
             <button onClick={() => toggleCart(false)}><AiOutlineClose/></button>
         </span>
-        <section className='flex flex-col h-screen items-center w-full px-6 py-4 space-y-8'>
-        {line_items.map(item => {
+        <section className={`flex flex-col h-screen items-center w-full ${line_items > 0 && 'px-6 py-4 '}space-y-8`}>
+        {line_items > 0?line_items.map(item => {
             return(
                 <CartItem key={item.id} item={item} />
             )
-        })}
+        }): <div className='flex flex-col items-center text-3xl text-gray-700 justify-center w-full bg-blue-100 h-screen'>
+        <p>Your cart is empty.</p>
+    </div>}
         </section>
     </div> );
 }
