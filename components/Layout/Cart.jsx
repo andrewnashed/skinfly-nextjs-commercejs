@@ -45,7 +45,7 @@ const Cart = ({toggleCart}) => {
             <h2 className=' '>Cart</h2>
             <button onClick={() => toggleCart(false)}><AiOutlineClose/></button>
         </span>
-        <section className={`flex flex-col h-screen items-center w-full ${line_items > 0 && 'px-6 py-4 '}space-y-8`}>
+        <section className={`flex flex-col h-screen items-center w-full ${line_items.length > 0 && 'px-6 py-4 '}space-y-8`}>
         {line_items.length > 0?line_items.map(item => {
             return(
                 <CartItem key={item.id} item={item} />
