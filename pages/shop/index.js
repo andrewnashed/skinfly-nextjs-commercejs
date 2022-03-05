@@ -23,7 +23,7 @@ export default function ShopPage({products, categories}){
                 return(
                     <section id={`${category.slug}`} key={category.id} className='w-full flex flex-col items-center space-y-6'>
                         <h2 className='text-4xl text-bold'>{category.name}</h2>
-                        <section className='flex w-[70%] justify-evenly items-center flex-wrap place-items-center sm:w-full'>
+                        <section className='flex w-[70%] justify-evenly items-center flex-wrap place-items-center md:w-[90%] sm:w-full'>
                         {products.filter(product => product.categories[0].name === category.name ).map(product => <Product key={product.id} product={product} />)}
                         </section>
                     </section>

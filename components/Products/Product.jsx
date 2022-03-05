@@ -44,7 +44,7 @@ const Product = ({product}) => {
 
     return ( 
       <Link href={`/shop/${product.permalink}`}>
-      <div className='sm:w-[45%]  w-[30%]  mt-6'>
+      <div className='sm:w-[45%] md:w-[40%]  w-[30%]  mt-6'>
         <div            
          style={{backgroundImage: `linear-gradient(rgba(0,0,0, 0.3), rgba(0, 0, 0, 0.7)), url(${product.image.url})`}}
          className='bg-cover t bg-center bg-no-repeat h-[250px]  flex justify-end text-white'>             
