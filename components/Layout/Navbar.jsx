@@ -31,7 +31,7 @@ const Navbar = ({toggleCart}) => {
 
     return ( <nav 
     style={{backgroundColor:(openNav || color)&&'white', color:(openNav || color)&&'black', position:color && 'fixed'}}
-    className='flex flex-wrap flex-row w-full justify-evenly sm:justify-between absolute top-0 z-10 py-4 px-6'>
+    className='flex flex-wrap flex-row w-full justify-evenly items-center sm:justify-between absolute top-0 z-10 py-4 px-6'>
         <Link href="/"><a className='text-3xl hover:text-gray-500 '>
             Skinfly
             </a></Link>
